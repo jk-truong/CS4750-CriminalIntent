@@ -38,6 +38,7 @@ class CrimeFragment : Fragment() {
             text = crime.date.toString()
             isEnabled = false
         }
+
         return view
     }
 
@@ -52,7 +53,7 @@ class CrimeFragment : Fragment() {
                 count: Int,
                 after: Int
             ) {
-                //Blank
+                //blank
             }
 
             override fun onTextChanged(
@@ -61,11 +62,11 @@ class CrimeFragment : Fragment() {
                 before: Int,
                 count: Int
             ) {
-                //blank
+                crime.title = sequence.toString()
             }
 
             override fun afterTextChanged(sequence: Editable?) {
-                // Also blank
+                //also blank
             }
         }
 
