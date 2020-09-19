@@ -25,6 +25,8 @@ android {
     }
 }
 
+
+//Make sure to use kapt plugin ver 1.3.21. Downgrade gradle version if necessary.
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
