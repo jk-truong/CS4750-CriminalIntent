@@ -12,6 +12,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.list_item_crime.view.*
+import java.text.DateFormat
+import java.text.DateFormat.FULL
+import java.text.DateFormat.MEDIUM
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 private const val TAG = "CrimeListFragment"
@@ -98,8 +104,7 @@ class CrimeListFragment : Fragment() {
     }
 
     //CrimeHolder view class
-    private inner class CrimeHolder(view: View)
-        : RecyclerView.ViewHolder(view), View.OnClickListener {
+    private inner class CrimeHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         private lateinit var crime: Crime
 
@@ -107,9 +112,8 @@ class CrimeListFragment : Fragment() {
         private val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
         private val solvedImageView: ImageView = itemView.findViewById(R.id.crime_solved)
 
-        //Determine which view to load here (use getItemViewType(Int)
 
-        //For now, show toast when item is pressed
+        //Determine which view to load here (use getItemViewType(Int)
         init {
             itemView.setOnClickListener(this)
         }
@@ -117,7 +121,8 @@ class CrimeListFragment : Fragment() {
         fun bind(crime: Crime) {
             this.crime = crime
             titleTextView.text = this.crime.title
-            dateTextView.text = this.crime.date.toString()
+            dateTextView.text = DateFormat.getDateInstance(FULL).format(crime.date) //Formatted the date easier to read
+            //dateTextView.text = this.crime.date.toString()
             //Shows the handcuffs if the crime is solved.
             solvedImageView.visibility = if (crime.isSolved) {
                 View.VISIBLE

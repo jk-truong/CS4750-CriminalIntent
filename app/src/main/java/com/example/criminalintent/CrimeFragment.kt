@@ -14,6 +14,9 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.Observer
+import java.text.DateFormat
+import java.text.DateFormat.FULL
+import java.text.DateFormat.MEDIUM
 import java.util.*
 
 //Store arguments in fragment arguments.
@@ -126,7 +129,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
 
     private fun updateUI() {
         titleField.setText(crime.title)
-        dateButton.text = crime.date.toString()
+        dateButton.text = DateFormat.getDateInstance(FULL).format(crime.date)
         //solvedCheckBox.isChecked = crime.isSolved
         solvedCheckBox.apply {
             isChecked = crime.isSolved
